@@ -6,3 +6,8 @@ from .serializers import EssaySerializer
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Essay.objects.all()
     serializer_class = EssaySerializer
+
+
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
