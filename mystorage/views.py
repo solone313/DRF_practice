@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from .models import Essay , Album , Files
 from .serializers import EssaySerializer, AlbumSerializer, FilesSerializer
 from rest_framework.filters import SearchFilter
-
+from rest_framework.parsers import MultiPartParser,FormParser
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Essay.objects.all()
     serializer_class = EssaySerializer
@@ -32,6 +32,22 @@ class ImgViewSet(viewsets.ModelViewSet):
     queryset = Album.objects.all()
     serializer_class = AlbumSerializer
 
+
+from rest_framework.response import Response
+from rest_framework import status
+
 class FileViewSet(viewsets.ModelViewSet):
     queryset = Files.objects.all()
     serializer_class = FilesSerializer
+
+    parser_classes = (MultiPartParser, FormParser)
+
+
+    def post(self, request, *args, **kwargs):
+        serializer = FilesSerializer(data=request.data)
+        if serializer.is_vaild():
+            serializer.save()
+            return Response(serializer.data, status = HTTP_201_CREATED)
+
+        else: 
+            return Response(serializer.error, status= HTTP_400_BAD_REQUEST)
