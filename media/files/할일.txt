@@ -1,0 +1,30 @@
+type Alarm {
+    PK: String
+    SK: String
+    alarmHead: String
+    pushAlarmContent: String
+    alarmBellContent: String
+    createdAt: String
+    updatedAt: String
+    isRead: Boolean
+}
+
+
+1. 로컬에서 jest test
+
+2. 로컬에서 개발환경 test 구축
+
+3. 탈퇴 개선 graphql로 변환(정진님과 test)
+
+4. 취약점 테스트 (yml의 put 3개 delete 2개 조정) => 승우님과 협의
+
+
+{
+  "PK": "testdelete",
+  "SK": "01051196127",
+  "phoneVendor": "a",
+  "birthday": "b",
+  "gender": "남",
+  "realName": "mola",
+}
+
