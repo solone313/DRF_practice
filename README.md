@@ -9,3 +9,5 @@
 - parserclass를 이용하여 다양한 파일업로드
 
 - get_queryset와 perform_create등을 통한 user field 자동 생성 및 유저의 글만 get하는 방법
+
+- 테스트 주도 개발
